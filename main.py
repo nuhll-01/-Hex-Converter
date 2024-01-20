@@ -1,7 +1,9 @@
 # Developer: ToastyyX
 # A python script that converts a positive or zero decimal value into its hexadecimal representation.
 
+
 class HexadecimalConverter:
+    default_value = 0
 
     # A default constructor which instantiates an empty list when the object is created.
     def __init__(this):
@@ -27,9 +29,12 @@ class HexadecimalConverter:
     def __convert_to_hexadecimal(this, decimal_value):
         if decimal_value < 0 or not isinstance(decimal_value, int):
             raise ValueError('Invalid Value.')
+        if decimal_value == 0:
+            print(this.default_value)
 
-        divisor = 16
+        original_value = decimal_value
         dividend = decimal_value
+        divisor = 16
         hex_letter_mapping = {
             10: 'A',
             11: 'B',
@@ -56,12 +61,17 @@ class HexadecimalConverter:
                 this.__my_list.append('x')
                 this.__my_list.append(dividend)
         this.__my_list.reverse()
-        this.__print_hexadecimal()
+        this.__print_hexadecimal(original_value)
 
     # Display the contents of the list formatted in a hexadecimal fashion.
-    def __print_hexadecimal(this):
+    def __print_hexadecimal(this, x):
+        print('\n--------------')
+        print('Decimal Value: ', x)
         for i in range(len(this.__my_list)):
-            print(this.__my_list[i], end='')
+            if this.__my_list[i] is this.__my_list[0]:
+                print('Hexadecimal Value:', this.__my_list[i], end='')
+            else:
+                print(this.__my_list[i], end='')
 
     # Magic Method (Don't even know what this is doing to my program, might be irrelevant?).
     def __gt__(this, other):
