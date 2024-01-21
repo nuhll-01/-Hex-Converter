@@ -29,8 +29,6 @@ class HexadecimalConverter:
     def __convert_to_hexadecimal(this, decimal_value):
         if decimal_value < 0 or not isinstance(decimal_value, int):
             raise ValueError('Invalid Value.')
-        if decimal_value == 0:
-            print(this.default_value)
 
         original_value = decimal_value
         dividend = decimal_value
@@ -65,13 +63,15 @@ class HexadecimalConverter:
 
     # Display the contents of the list formatted in a hexadecimal fashion.
     def __print_hexadecimal(this, x):
-        print('\n--------------')
+        print('--------------')
         print('Decimal Value: ', x)
+        if x == 0:
+            print('Hexadecimal Value:', x)
         for i in range(len(this.__my_list)):
             if this.__my_list[i] is this.__my_list[0]:
                 print('Hexadecimal Value:', this.__my_list[i], end='')
             else:
-                print(this.__my_list[i], end='')
+                print(this.__my_list[i], end='',)
 
     # Magic Method (Don't even know what this is doing to my program, might be irrelevant?).
     def __gt__(this, other):
